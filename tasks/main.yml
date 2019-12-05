@@ -1,0 +1,21 @@
+---
+# tasks file for ansible-helper-scripts
+- name: Make sure .local/bin exists
+  file:
+    path: /home/{{user}}/.local/bin
+    state: directory
+
+- name: Copy helper scripts
+  copy:
+    src: gtk3/{{item}}
+    dest: "/home/{{user}}/.local/bin/{{item}}"
+  with_items:
+    - "display_handler"
+    - "ix"
+    - "launch_polybar"
+    - "lock"
+    - "mutt-html-helper.sh"
+    - "offlineimap_pass.py"
+    - "passsudo"
+    - "pb.sh"
+    - "shadow-scrot.sh"
